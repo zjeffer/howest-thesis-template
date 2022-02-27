@@ -7,6 +7,7 @@
 %                                                   % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%% Package importing %%%%%
 \usepackage[english]{babel}
 \usepackage[margin=3cm]{geometry}
 \usepackage{graphicx}
@@ -20,38 +21,46 @@
 \usepackage{titlesec}
 \usepackage{titletoc}
 \usepackage{tcolorbox}
+\usepackage{enumitem}
 
 
-% fonts
+%%%%% Change fonts here %%%%%
 \usepackage[T1]{fontenc}
 \usepackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
 
 \graphicspath{{img/}}
 
-% theorem environment
+%%%%% \theorem environment %%%%%
 \usepackage{amssymb}
-
 \newtheorem{theorem}{Definition}[section]
-
-\usepackage{enumitem}
-
 \newenvironment{thmenum}
  {\begin{enumerate}[label=\upshape\bfseries(\roman*)]}
  {\end{enumerate}}
 
 
-% code
+%%%%% Styled code block %%%%%
 \usepackage{minted}
 \setminted{frame=single,framesep=3pt,linenos}
 \usepackage{upquote}
 \usepackage{color}
 
-\definecolor{titlepagecolor}{RGB}{68,200,245}
+%%%%% TOC styling %%%%%
+\makeatletter
+\renewcommand\tableofcontents{%
+  \null\hfill\textbf{\Huge\contentsname}\hfill\null\par
+  \vline\noexpand\rule{\textwidth}{1pt}%
+  \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+  \@starttoc{toc}%
+}
+\makeatother
+
+
 
 \begin{document}
 
 %%%%% title page %%%%%
+\definecolor{titlepagecolor}{RGB}{68,200,245}
 \begin{titlepage}
     \pagecolor{titlepagecolor}
     \newgeometry{left=3cm,right=1cm,bottom=1cm}
@@ -75,7 +84,7 @@
 \restoregeometry
 \nopagecolor
 
-
+%%%%% Set pagenumbering from here %%%%%
 \pagenumbering{arabic}
 
 %%%%% Foreword %%%%%
